@@ -18,6 +18,8 @@ namespace EditordeGrafos
         private Graph grafArbol = new Graph();
         public Graph original = new Graph();
 
+        private int count;
+
         public Reducido(Graph graph)
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace EditordeGrafos
             graphicsDeep = CreateGraphics();
             bmp6 = new Bitmap(900, 700);
             AutoScroll = true;
+            visitaNodo = new List<NodeP>();
+            count = 0;
 
             foreach (NodeP n in original)
             {
@@ -35,27 +39,32 @@ namespace EditordeGrafos
 
 
 
-        public void IniciaBusqueda(Graph gr)
+        public List<List<NodeP>> IniciaBusqueda(Graph gr)
         {
-            int count = 0;
-            int n_A = 0;
+            //int count = 0;
+            List<List<NodeP>> componentes = new List<List<NodeP>>();
+            int num_Arbol = 0;
             foreach (NodeP n in gr)
             {
                 if (n.Visited == false)
                 {
-                    n_A++;
-                    BusquedaProfundidad(n, count, n_A, gr);
+                    num_Arbol++;
+                    BusquedaProfundidad(n, num_Arbol, gr);
                 }
             }
+
+            return componentes;
         }
 
-        private void BusquedaProfundidad(NodeP n, int cont, int n_A, Graph g)
+        //List<NodeP>
+
+        private void BusquedaProfundidad(NodeP n,int num_Arbol, Graph g)
         {
             visitaNodo.Add(n);
             n.Visited = true;
-            n.Ntree = n_A;
-            cont++;
-            n.Level = cont;
+            n.Ntree = num_Arbol;
+           // count++;
+            n.Level = count++;
             List<NodeP> listaNodo = new List<NodeP>();
             List<NodeP> listaOrder = new List<NodeP>();
             foreach (Edge ed in g.edgesList)
@@ -67,12 +76,22 @@ namespace EditordeGrafos
             }
             listaOrder = listaNodo.OrderBy(NodeP => NodeP.Name).ToList();
 
+            foreach (Edge ed in g.edgesList)
+            {
+                if (n.Name == ed.Destiny.Name)
+                {
+                    listaNodo.Add(ed.Source);
+                }
+            }
+
+            
+
             foreach (NodeP nodeP in listaOrder)
             {
                 if (nodeP.Visited == false)
                 {
-                    visitaNodo.Add(n);
-                    BusquedaProfundidad(nodeP, cont, n_A, g);
+                    //visitaNodo.Add(n);
+                    BusquedaProfundidad(nodeP, num_Arbol, g);
                     if (nodeP.Ntree == 1)
                     {
                         label8.Text = label8.Text + "( " + n.Name + nodeP.Name + "), ";
@@ -84,50 +103,61 @@ namespace EditordeGrafos
                         label12.Text = label12.Text + "( " + n.Name + nodeP.Name + "), ";
                     }
 
-                    
-
+                 
                 }
-                else
+                else//si el nodo ya ha sido visitado se tiene un retroceso 
                 {
-                    if (nodeP.Level < n.Level)
+                    if(visitaNodo.Contains(nodeP))//hay un retroceso puesto que se quiere visitar un nodo dentro de la lista visitados, del arbol en construccion
                     {
-                        if (nodeP.Ntree == 1)
-                        {
-                            label9.Text = label9.Text + "( " + n.Name + nodeP.Name + "), ";
-                        }
-                        else
-                        {
-                            label13.Text = label13.Text + "( " + n.Name + nodeP.Name + "), ";
-                        }
-                    }
-                    else if (nodeP.Level == n.Level || nodeP.Ntree != n.Ntree)
-                    {
-                        if (n.Ntree == 1)
-                        {
-                            label10.Text = label10.Text + "( " + n.Name + nodeP.Name + "), ";
-                            labelFuerteConexo.Visible = false;
-                            labelConexo.Text = "ES UN GRAFO DEBILMENTE CONEXO";
 
-                        }
-                        else
-                        {
-                            label14.Text = label14.Text + "( " + n.Name + nodeP.Name + "), ";
-                        }
+                    }
+
+                    //if (nodeP.Level < n.Level)
+                    //{
+                    //    if (nodeP.Ntree == 1)
+                    //    {
+                    //        label9.Text = label9.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //    }
+                    //    else
+                    //    {
+                    //        label13.Text = label13.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //    }
+                    //}
+                    //else if (nodeP.Level == n.Level || nodeP.Ntree != n.Ntree)
+                    //{
+                    //    if (n.Ntree == 1)
+                    //    {
+                    //        label10.Text = label10.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //        labelFuerteConexo.Visible = false;
+                    //        labelConexo.Text = "ES UN GRAFO DEBILMENTE CONEXO";
+
+                    //    }
+                    //    else
+                    //    {
+                    //        label14.Text = label14.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //    }
                         
-                    }
-                    else if (nodeP.Level > n.Level)
-                    {
-                        if (nodeP.Ntree == 1)
-                        {
-                            label11.Text = label11.Text + "( " + n.Name + nodeP.Name + "), ";
-                        }
-                        else
-                        {
-                            label15.Text = label15.Text + "( " + n.Name + nodeP.Name + "), ";
-                        }
-                    }
+                    //}
+                    //else if (nodeP.Level > n.Level)
+                    //{
+                    //    if (nodeP.Ntree == 1)
+                    //    {
+                    //        label11.Text = label11.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //    }
+                    //    else
+                    //    {
+                    //        label15.Text = label15.Text + "( " + n.Name + nodeP.Name + "), ";
+                    //    }
+                    //}
                 }
             }
+        }
+
+
+        private void BusquedaInversa()
+        {
+
+
         }
 
       

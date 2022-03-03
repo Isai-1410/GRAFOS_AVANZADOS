@@ -30,13 +30,13 @@ namespace EditordeGrafos
         private void InitializeComponent()
         {
             this.groupBoxEu = new System.Windows.Forms.GroupBox();
+            this.labelNone = new System.Windows.Forms.Label();
             this.labelCaE = new System.Windows.Forms.Label();
             this.labelCE = new System.Windows.Forms.Label();
             this.labelCam = new System.Windows.Forms.Label();
             this.labelCir = new System.Windows.Forms.Label();
             this.labelText = new System.Windows.Forms.Label();
             this.labelR = new System.Windows.Forms.Label();
-            this.labelNone = new System.Windows.Forms.Label();
             this.groupBoxEu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,15 @@ namespace EditordeGrafos
             this.groupBoxEu.TabStop = false;
             this.groupBoxEu.Text = "Camino y circuito";
             this.groupBoxEu.Enter += new System.EventHandler(this.groupBoxEu_Enter);
+            // 
+            // labelNone
+            // 
+            this.labelNone.AutoSize = true;
+            this.labelNone.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNone.Location = new System.Drawing.Point(512, 30);
+            this.labelNone.Name = "labelNone";
+            this.labelNone.Size = new System.Drawing.Size(0, 15);
+            this.labelNone.TabIndex = 3;
             // 
             // labelCaE
             // 
@@ -115,19 +124,11 @@ namespace EditordeGrafos
             this.labelR.Text = "Recorrido = ";
             this.labelR.Visible = false;
             // 
-            // labelNone
-            // 
-            this.labelNone.AutoSize = true;
-            this.labelNone.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNone.Location = new System.Drawing.Point(512, 30);
-            this.labelNone.Name = "labelNone";
-            this.labelNone.Size = new System.Drawing.Size(0, 15);
-            this.labelNone.TabIndex = 3;
-            // 
             // CircuitoEuleriano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(832, 523);
             this.Controls.Add(this.labelR);
             this.Controls.Add(this.labelText);

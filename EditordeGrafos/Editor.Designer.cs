@@ -107,6 +107,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.EulerCir = new System.Windows.Forms.ToolStripButton();
             this.ProfConv = new System.Windows.Forms.ToolStripButton();
+            this.ButtonFloyd = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStripMenuGeneral.SuspendLayout();
             this.toolStripMenuIcono.SuspendLayout();
@@ -712,7 +713,8 @@
             this.toolStripButton2,
             this.toolStripLabel1,
             this.EulerCir,
-            this.ProfConv});
+            this.ProfConv,
+            this.ButtonFloyd});
             this.toolStrip1.Location = new System.Drawing.Point(0, 63);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(32, 430);
@@ -756,6 +758,16 @@
             this.ProfConv.Size = new System.Drawing.Size(29, 20);
             this.ProfConv.Text = "Conexo";
             this.ProfConv.Click += new System.EventHandler(this.ProfConv_Click);
+            // 
+            // ButtonFloyd
+            // 
+            this.ButtonFloyd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonFloyd.Image = global::EditordeGrafos.Properties.Resources.Floyd;
+            this.ButtonFloyd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonFloyd.Name = "ButtonFloyd";
+            this.ButtonFloyd.Size = new System.Drawing.Size(29, 20);
+            this.ButtonFloyd.Text = "Floyd";
+            this.ButtonFloyd.Click += new System.EventHandler(this.ButtonFloyd_Click);
             // 
             // Editor
             // 
@@ -872,6 +884,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator26;
         private System.Windows.Forms.ToolStripButton EulerCir;
         private System.Windows.Forms.ToolStripButton ProfConv;
+        private System.Windows.Forms.ToolStripButton ButtonFloyd;
     }
 }
 

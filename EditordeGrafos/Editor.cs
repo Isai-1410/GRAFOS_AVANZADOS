@@ -1034,6 +1034,12 @@ namespace EditordeGrafos
             Reducido conve = new Reducido(graph);
             conve.ShowDialog();
         }
+
+        private void ButtonFloyd_Click(object sender, EventArgs e)
+        {
+            Floyd fd = new Floyd(graph);
+            fd.ShowDialog();
+        }
         #endregion
         /*
         private void toolStripButton3_Click(object sender, EventArgs e)

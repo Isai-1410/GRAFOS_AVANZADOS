@@ -142,17 +142,14 @@
   <data name="guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="propiedades" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\propiedades.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="insertacn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insertacn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="caminoEuler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\caminoEuler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cimitarra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cimitarra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="topologico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\topologico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="nodirigido" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nodirigido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -162,9 +159,6 @@
   </data>
   <data name="coloreado1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coloreado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="halmiton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\halmiton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coloreado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coloreado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,14 +181,17 @@
   <data name="aristaColoreada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aristaColoreada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cambio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cambio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="halmiton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\halmiton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="insertacn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\insertacn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="insertakn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insertakn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="movernodo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\movernodo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="propiedades" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\propiedades.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="complemento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\complemento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,14 +208,20 @@
   <data name="circuitoEuler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\circuitoEuler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dijkstra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dijkstra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="topologico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\topologico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kura" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kura.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="insertakn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\insertakn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="petersen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\petersen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dijkstra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dijkstra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="conexo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conexo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="programa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\programa.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,10 +229,10 @@
   <data name="eliminanodo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eliminanodo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="petersen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\petersen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cambio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cambio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="conexo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\conexo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Floyd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Floyd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
