@@ -17,8 +17,8 @@ namespace EditordeGrafos
         private Graphics graphicsDeep;
         private Graph grafArbol = new Graph();
         public Graph original = new Graph();
-
         private int count;
+   
 
         public Reducido(Graph graph)
         {
@@ -30,142 +30,179 @@ namespace EditordeGrafos
             AutoScroll = true;
             visitaNodo = new List<NodeP>();
             count = 0;
-
+          
             foreach (NodeP n in original)
             {
                 n.Visited = false;
+                n.Level = 0;
+                //para hacer las comparaciones en el algoritmo de Tarjan
+                n.ValorComponente = 0;
             }
         }
 
 
-
-        public List<List<NodeP>> IniciaBusqueda(Graph gr)
+        private NodeP getMayor(List<NodeP> ordenados)
         {
-            //int count = 0;
-            List<List<NodeP>> componentes = new List<List<NodeP>>();
+            NodeP res = ordenados[ordenados.Count - 1];
+
+            foreach(NodeP nodo in ordenados)
+            {
+                if (nodo.Visited == false)
+                {
+                    res = nodo;
+                }
+            }
+            return res;
+        }
+
+
+
+        //el algoritmo de Tarjan retornará componentes conexos del grafo dirijido
+        public List<List<NodeP>> getComponentes_FC(Graph gr)
+        {
+            //se inicializa la lista de componentes que será retornada
+            List<List<NodeP>> allComponents = new List<List<NodeP>>();
+
+            //Se inicializa el contador en 1
+            count = 1;
+            //Se inicializa el numero de arbol ó componente en 0
             int num_Arbol = 0;
+
+            //ya que cualquier nodo dentro de un componente puede ser tratado como raiz en el componente
+            //llamamos a un recorrido en profundidad con el auxiliar de Tarjan a todos los nodos
+            //con el orden prestablecido en el grafo
             foreach (NodeP n in gr)
             {
+                //Si el nodo no ha sido visitado en el recorrido, se visita y se generara un nuevo componente 
+                //por lo que la variable de numero de arbol incrementa 
                 if (n.Visited == false)
                 {
-                    num_Arbol++;
-                    BusquedaProfundidad(n, num_Arbol, gr);
+                    //List<NodeP> comp = new List<NodeP>();
+                    getComponentes_FC_Aux(n, num_Arbol, gr);//busqueda en profundidad con el algoritmo de Tarjan
+                    num_Arbol++;//Siguiente numero en el componente.
                 }
-            }
+            }//despues de este ciclo se finaizo el recorrido en profundidad de el grafo original
 
-            return componentes;
-        }
+            //conseguimos enumerar todos los nodos 
 
-        //List<NodeP>
+            //desvisitar los nodos para hacer su recorridfo en profundidad en el grafo inverso
+            gr.setAllNodesAs(false);
 
-        private void BusquedaProfundidad(NodeP n,int num_Arbol, Graph g)
-        {
-            visitaNodo.Add(n);
-            n.Visited = true;
-            n.Ntree = num_Arbol;
-           // count++;
-            n.Level = count++;
-            List<NodeP> listaNodo = new List<NodeP>();
-            List<NodeP> listaOrder = new List<NodeP>();
-            foreach (Edge ed in g.edgesList)
-            {
-                if (n.Name == ed.Source.Name)
-                {
-                    listaNodo.Add(ed.Destiny);
-                }
-            }
-            listaOrder = listaNodo.OrderBy(NodeP => NodeP.Name).ToList();
-
-            foreach (Edge ed in g.edgesList)
-            {
-                if (n.Name == ed.Destiny.Name)
-                {
-                    listaNodo.Add(ed.Source);
-                }
-            }
-
+            //obtenemos el nodo con mayor nivel
+           
             
 
-            foreach (NodeP nodeP in listaOrder)
+            List<NodeP>  ordenados = gr.OrderBy(NodeP => NodeP.Level).ToList();
+
+            while (gr.allVisited() == false)
             {
-                if (nodeP.Visited == false)
-                {
-                    //visitaNodo.Add(n);
-                    BusquedaProfundidad(nodeP, num_Arbol, g);
-                    if (nodeP.Ntree == 1)
-                    {
-                        label8.Text = label8.Text + "( " + n.Name + nodeP.Name + "), ";
-                        labelFuerteConexo.Text = "EL GRAFO ES FUERTEMENTE CONEXO";
-                        
-                    }
-                    else
-                    {
-                        label12.Text = label12.Text + "( " + n.Name + nodeP.Name + "), ";
-                    }
 
-                 
-                }
-                else//si el nodo ya ha sido visitado se tiene un retroceso 
-                {
-                    if(visitaNodo.Contains(nodeP))//hay un retroceso puesto que se quiere visitar un nodo dentro de la lista visitados, del arbol en construccion
-                    {
+                NodeP nodoInicioInversa = getMayor(ordenados);
 
-                    }
+                List<NodeP> componentesFC = new List<NodeP>();
 
-                    //if (nodeP.Level < n.Level)
-                    //{
-                    //    if (nodeP.Ntree == 1)
-                    //    {
-                    //        label9.Text = label9.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //    }
-                    //    else
-                    //    {
-                    //        label13.Text = label13.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //    }
-                    //}
-                    //else if (nodeP.Level == n.Level || nodeP.Ntree != n.Ntree)
-                    //{
-                    //    if (n.Ntree == 1)
-                    //    {
-                    //        label10.Text = label10.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //        labelFuerteConexo.Visible = false;
-                    //        labelConexo.Text = "ES UN GRAFO DEBILMENTE CONEXO";
+                getComponentes_FC_Aux_Inversa(nodoInicioInversa, num_Arbol, gr, componentesFC);
+                allComponents.Add(componentesFC);
 
-                    //    }
-                    //    else
-                    //    {
-                    //        label14.Text = label14.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //    }
-                        
-                    //}
-                    //else if (nodeP.Level > n.Level)
-                    //{
-                    //    if (nodeP.Ntree == 1)
-                    //    {
-                    //        label11.Text = label11.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //    }
-                    //    else
-                    //    {
-                    //        label15.Text = label15.Text + "( " + n.Name + nodeP.Name + "), ";
-                    //    }
-                    //}
-                }
             }
-        }
 
 
-        private void BusquedaInversa()
-        {
-
-
+            return allComponents;
         }
 
       
 
+        //se almacenan temporalmente los vertices que han sido visitados en la busqueda,
+        //pero que aun no se han asociado a un componente
+        Stack<NodeP> pilaNodos = new Stack<NodeP>();
+   
+
+        private void getComponentes_FC_Aux(NodeP n,int num_Arbol, Graph g)
+        {
+            n.Visited = true;//marcar el nodo como visitado.
+            n.Level = count;//se le asigna un valor a el nivel del nodo y se suma uno al contador para el recorrido de los nodos siguientes.
+           
+            n.ValorComponente = count;
+            count++;
+            pilaNodos.Push(n);//se le agrega en el stack auxiliar el nodo
+
+            n.Ntree = num_Arbol;//Se le asigna un numero de árbol o componente, al nodo que se visita
+            visitaNodo.Add(n);//lista de nodos visitados en el recorrido.
+
+
+            //Lista de nodos a visitar por el nodo actual
+            List<NodeP> nodosVecinos = new List<NodeP>();
+            foreach (Edge ed in g.edgesList)
+            {
+                if (n.Name == ed.Source.Name)
+                {
+                    nodosVecinos.Add(ed.Destiny);
+                }
+            }
+            nodosVecinos = nodosVecinos.OrderBy(NodeP => NodeP.Name).ToList();
+
+
+
+            foreach (NodeP nodeP in nodosVecinos)//por cada vecino del nodo actual hará una visita
+            {
+                if (nodeP.Level == 0)//si el vecino no ha sido visitado se procede a visitarlo 
+                {
+                    getComponentes_FC_Aux(nodeP, num_Arbol, g);//se ejecuta la busqueda en profundidad recursiva sobre esta misma funcion con el nodo vecino
+                    //n.ValorComponente = Math.Min(n.ValorComponente, nodeP.ValorComponente);
+                }
+                /*else//si el nodo ya ha sido visitado se tiene un retroceso 
+                {
+                    if(pilaNodos.Contains(nodeP))// si el nodo ya fué visitado y está en la pila
+                    {
+                        n.ValorComponente = Math.Min(n.ValorComponente, nodeP.Level);
+                    }
+                }*/
+            }
+        }
+
+
+       
+
+        private void getComponentes_FC_Aux_Inversa(NodeP n, int num_Arbol, Graph g, List<NodeP> componente)
+        {
+            componente.Add(n);
+            n.Visited = true;//marcar el nodo como visitado.
+
+            //Lista de nodos a visitar por el nodo actual
+            List<NodeP> nodosPadre = new List<NodeP>();
+            foreach (Edge ed in g.edgesList)
+            {
+                if (n.Name == ed.Destiny.Name)
+                {
+                    nodosPadre.Add(ed.Source);
+                }
+            }
+            nodosPadre = nodosPadre.OrderBy(NodeP => NodeP.Name).ToList();
+            
+
+
+            foreach (NodeP nodeP in nodosPadre)//por cada vecino inverso del nodo actual hará una visita
+            {
+                if (nodeP.Visited == false)//si el vecino no ha sido visitado se procede a visitarlo 
+                {
+                    getComponentes_FC_Aux_Inversa(nodeP, num_Arbol, g, componente);//se ejecuta la busqueda en profundidad recursiva sobre esta misma funcion con el nodo vecino     
+                }
+                /*else//si el nodo ya ha sido visitado se tiene un retroceso 
+                {
+                    if (pilaNodos.Contains(nodeP))// si el nodo ya fué visitado y está en la pila
+                    {
+                        n.ValorComponente = Math.Min(n.ValorComponente, nodeP.Level);
+                    }
+                }*/
+            }
+        }
+
+
+
         private void buttonMuestra_Click(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
-            IniciaBusqueda(original);
+            getComponentes_FC(original);
             label1.Text = "Recorrido de los nodos visitados:  ";
 
             foreach (NodeP n in visitaNodo)

@@ -135,6 +135,26 @@ namespace EditordeGrafos {
             }
         }
 
+        public void setAllNodesAs(bool trueOrFalse)
+        {
+            foreach(NodeP node in this)
+            {
+                node.Visited = trueOrFalse;
+            }
+        }
+
+        public bool allVisited()
+        {
+            foreach (NodeP node in this)
+            {
+                if (node.Visited == false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void AddNode(NodeP n) {
             Add(n);
         }

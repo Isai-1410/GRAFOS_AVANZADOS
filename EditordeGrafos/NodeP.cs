@@ -9,19 +9,28 @@ using System.Windows.Forms;
 namespace EditordeGrafos{
     [Serializable()]
 
-    public class NodeP{
+    public class NodeP {
         private bool visited;
         private bool selected;
         private int nivel = 0;
+
+        //para el algoritmo de Tarjan
+        private int sccInd = 0;
+
         private int narbol;
         private int degree;
         private int degreeIn;
         private int degreeEx;
-        
+
         private string name; /// tomar este 
         private Point position;
         private Color color;
         public List<NodeR> relations;
+
+        public int ValorComponente{
+            get { return sccInd; }
+            set { sccInd = value; } 
+            }
 
         public Point Position { 
             get { return position; } 
